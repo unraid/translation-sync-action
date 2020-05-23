@@ -12,5 +12,8 @@ RUN apt-get update \
     && apt-get -y upgrade \
     && apt-get install -y git npm
 
+# Ensure we always use ssh keys for github
+RUN git config --global url."git@github.com:".insteadOf "https://github.com/"
+
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

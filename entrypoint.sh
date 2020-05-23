@@ -33,9 +33,9 @@ fi
 
 # Get translation-manager
 if [[ $DRY_RUN ]]; then
-    [ -f "./tmp/translation-manager/bin/sync" ] || echo "git clone git@github.com:unraid/translation-manager.git ./tmp/translation-manager"
+    [ -f "./tmp/translation-manager/bin/sync" ] || echo "git clone https://github.com/unraid/translation-manager ./tmp/translation-manager"
 else
-    [ -f "./tmp/translation-manager/bin/sync" ] || git clone git@github.com:unraid/translation-manager.git ./tmp/translation-manager
+    [ -f "./tmp/translation-manager/bin/sync" ] || git clone https://github.com/unraid/translation-manager ./tmp/translation-manager
 fi
 
 # Reassign for easier use
@@ -44,10 +44,10 @@ sync=./tmp/translation-manager/bin/sync
 # Checkout each language that's enabled
 for LANGUAGE in "${LANGUAGES[@]}"; do
     if [[ $DRY_RUN ]]; then
-        echo "git clone git@github.com:limetech/lang-$LANGUAGE.git ./tmp/lang-$LANGUAGE"
+        echo "git clone https://github.com/limetech/lang-$LANGUAGE ./tmp/lang-$LANGUAGE"
     fi
 
-    git clone "git@github.com:limetech/lang-$LANGUAGE.git" "./tmp/lang-$LANGUAGE"
+    git clone "https://github.com/limetech/lang-$LANGUAGE" "./tmp/lang-$LANGUAGE"
 done
 
 # Sync each file
