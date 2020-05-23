@@ -1,0 +1,9 @@
+name: 'Translation sync'
+description: 'Sync translations with our other language repos'
+inputs:
+  languages:
+    description: 'Languages to update seperated by comma (e.g. "en_US,nl_NL")'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
