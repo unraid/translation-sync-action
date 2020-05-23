@@ -17,6 +17,20 @@ fi
 
 mkdir -p tmp
 
+# Setup SSH keys if we're passed them
+if [[ $INPUT_SSH_KEY_PUBLIC ]]; then
+    mkdir ~/.ssh/
+    # Add keys
+    echo "${{ INPUT_SSH_KEY_PRIVATE }}" > ~/.ssh/id_rsa
+    echo "${{ INPUT_SSH_KEY_PUBLIC }}" > ~/.ssh/id_rsa.pub
+    # Verifiy keys
+    ssh-keygen -l -f ~/.ssh/id_rsa.pub
+    # Add github.com to known hosts
+    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+    # Set correct permissions
+    chmod 600 ~/.ssh/id_rsa
+fi
+
 # Get translation-manager
 if [[ $DRY_RUN ]]; then
     [ -f "./tmp/translation-manager/bin/sync" ] || echo "git clone https://github.com/unraid/translation-manager ./tmp/translation-manager"
