@@ -31,6 +31,12 @@ if [[ $INPUT_SSH_KEY_PUBLIC ]]; then
     chmod 600 ~/.ssh/id_rsa
 fi
 
+# SSH directory should exist now otherwise bail
+if [[ ! $DRY_RUN ]] && [[ ! -f "$HOME/.ssh/id_rsa" ]]; then
+    echo "Missing SSH file needed for committing"
+    exit 1;
+fi
+
 # Get translation-manager
 if [[ $DRY_RUN ]]; then
     [ -f "./tmp/translation-manager/bin/sync" ] || echo "git clone https://github.com/unraid/translation-manager ./tmp/translation-manager"
