@@ -11,7 +11,7 @@ IFS=', ' read -r -a LANGUAGES <<< "$INPUT_LANGUAGES"
 # Ensure we have a directory to work in
 if [[ $DRY_RUN ]]; then
     echo 'mkdir -p tmp'
-else 
+else
     rm -rf tmp
 fi
 
@@ -67,6 +67,15 @@ for LANGUAGE in "${LANGUAGES[@]}"; do
     if [[ $DRY_RUN ]]; then
         echo "cd $PWD/tmp/lang-$LANGUAGE"
     fi
+
+    # Tell git who we are
+    if [[ $DRY_RUN ]]; then
+        echo "git config user.email \"bot@unraid.net\""
+        echo "git config user.name \"unraid-bot\""
+    else
+        git config user.email "bot@unraid.net"
+        git config user.name "unraid-bot"
+    fi
     
     # Add all changes
     git add -A
@@ -79,21 +88,21 @@ for LANGUAGE in "${LANGUAGES[@]}"; do
     BRANCH="bot-update-$VERSION"
     if [[ $DRY_RUN ]]; then
         echo "git checkout -b $BRANCH"
-    else 
+    else
         git checkout -b $BRANCH
     fi
 
     # Commit
     if [[ $DRY_RUN ]]; then
         echo "git commit -m chore: update language files"
-    else 
+    else
         git commit -m "chore: update language files"
     fi
 
     # Push
     if [[ $DRY_RUN ]]; then
         echo "git push --set-upstream origin $BRANCH"
-    else 
+    else
         git push --set-upstream origin $BRANCH
     fi
     
