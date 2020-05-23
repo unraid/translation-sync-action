@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-if [[ ! $LANGUAGES ]]; then
+if [[ ! $INPUT_LANGUAGES ]]; then
     echo 'No languages selected!'
     exit 1;
 fi
 
 # Get languages as array
-IFS=', ' read -r -a LANGUAGES <<< "$LANGUAGES"
+IFS=', ' read -r -a LANGUAGES <<< "$INPUT_LANGUAGES"
 
 # Ensure we have a directory to work in
 if [[ $DRY_RUN ]]; then
