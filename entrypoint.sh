@@ -57,7 +57,7 @@ for file in *.txt **/*.txt; do
     done
 done
 
-# Commit changes
+# Commit and push changes to new branch
 for LANGUAGE in "${LANGUAGES[@]}"; do
     # Save for cleanup
     LAST_DIR=$PWD
@@ -76,10 +76,11 @@ for LANGUAGE in "${LANGUAGES[@]}"; do
 
     # Branch
     VERSION=$(date '+%Y%m%d%H%M')
+    BRANCH="bot-update-$VERSION"
     if [[ $DRY_RUN ]]; then
-        echo "git checkout -b bot-update-$VERSION"
+        echo "git checkout -b $BRANCH"
     else 
-        git checkout -b "bot-update-$VERSION"
+        git checkout -b $BRANCH
     fi
 
     # Commit
@@ -91,9 +92,9 @@ for LANGUAGE in "${LANGUAGES[@]}"; do
 
     # Push
     if [[ $DRY_RUN ]]; then
-        echo "git push"
+        echo "git push --set-upstream origin $BRANCH"
     else 
-        git push
+        git push --set-upstream origin $BRANCH
     fi
     
     # Cleanup for next loop

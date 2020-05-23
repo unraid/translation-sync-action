@@ -12,5 +12,9 @@ RUN apt-get update \
     && apt-get -y upgrade \
     && apt-get install -y git npm
 
+# Tell git who we are
+RUN git config --global user.email "bot@unraid.net"
+RUN git config --global user.name "unraid-bot"
+
 ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
