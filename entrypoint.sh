@@ -18,11 +18,11 @@ fi
 mkdir -p tmp
 
 # Setup SSH keys if we're passed them
-if [[ $INPUT_SSH_KEY_PUBLIC ]]; then
+if [[ $INPUT_SSH-KEY-PUBLIC ]]; then
     mkdir ~/.ssh/
     # Add keys
-    echo "${{ INPUT_SSH_KEY_PRIVATE }}" > ~/.ssh/id_rsa
-    echo "${{ INPUT_SSH_KEY_PUBLIC }}" > ~/.ssh/id_rsa.pub
+    echo "${{ INPUT_SSH-KEY-PRIVATE }}" > ~/.ssh/id_rsa
+    echo "${{ INPUT_SSH-KEY-PUBLIC }}" > ~/.ssh/id_rsa.pub
     # Verifiy keys
     ssh-keygen -l -f ~/.ssh/id_rsa.pub
     # Add github.com to known hosts
