@@ -17,12 +17,6 @@ fi
 
 mkdir -p tmp
 
-# Allow github to pass env vars with a hyphen instead of underscore
-GITHUB_INPUT_SSH_KEY_PRIVATE=`env | sed -n 's/INPUT_SSH-KEY-PRIVATE=\(.*\)/\1/p'`
-GITHUB_INPUT_SSH_KEY_PUBLIC=`env | sed -n 's/INPUT_SSH-KEY-PUBLIC=\(.*\)/\1/p'`
-INPUT_SSH_KEY_PRIVATE=${GITHUB_INPUT_SSH_KEY_PRIVATE:-$INPUT_SSH_KEY_PRIVATE}
-INPUT_SSH_KEY_PUBLIC=${GITHUB_INPUT_SSH_KEY_PUBLIC:-$INPUT_SSH_KEY_PUBLIC}
-
 # Setup SSH keys if we're passed them
 if [[ $INPUT_SSH_KEY_PUBLIC ]]; then
     mkdir ~/.ssh/
