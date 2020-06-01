@@ -1,10 +1,10 @@
 name: 'Translation sync'
 description: 'Sync translations with our other language repos'
 inputs:
-  ssh-key-public:
+  ssh_key_public:
     description: 'id_rsa.pub for the user you want to commit'
     required: true
-  ssh-key-private:
+  ssh_key_private:
     description: 'id_rsa for the user you want to commit'
     required: true
   languages:
