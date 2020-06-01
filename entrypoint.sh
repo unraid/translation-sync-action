@@ -109,7 +109,7 @@ for LANGUAGE in "${LANGUAGES[@]}"; do
 
     # Branch
     VERSION=$(date '+%Y%m%d%H%M')
-    BRANCH="bot-update-$VERSION"
+    BRANCH="bot-update/$VERSION"
     if [[ $DRY_RUN ]]; then
         echo "git checkout -b $BRANCH"
     else
