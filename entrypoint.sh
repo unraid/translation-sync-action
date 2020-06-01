@@ -35,6 +35,8 @@ if [[ $INPUT_SSH_KEY_PUBLIC ]]; then
     ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
     # Set correct permissions
     chmod 600 ~/.ssh/id_rsa
+    # Ensure we use the ssh key for connecting
+    git config --global url."git@github.com:".insteadOf "https://github.com/"
 fi
 
 # SSH directory should exist now otherwise bail
