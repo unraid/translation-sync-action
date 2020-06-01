@@ -27,8 +27,8 @@ INPUT_SSH_KEY_PUBLIC=${GITHUB_INPUT_SSH_KEY_PUBLIC:-$INPUT_SSH_KEY_PUBLIC}
 if [[ $INPUT_SSH_KEY_PUBLIC ]]; then
     mkdir ~/.ssh/
     # Add keys
-    echo "${{ INPUT_SSH_KEY_PRIVATE }}" > ~/.ssh/id_rsa
-    echo "${{ INPUT_SSH_KEY_PUBLIC }}" > ~/.ssh/id_rsa.pub
+    echo "$INPUT_SSH_KEY_PRIVATE" > ~/.ssh/id_rsa
+    echo "$INPUT_SSH_KEY_PUBLIC" > ~/.ssh/id_rsa.pub
     # Verifiy keys
     ssh-keygen -l -f ~/.ssh/id_rsa.pub
     # Add github.com to known hosts
