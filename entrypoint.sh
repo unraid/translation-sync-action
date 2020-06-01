@@ -33,8 +33,6 @@ if [[ $INPUT_SSH_KEY_PUBLIC ]]; then
     ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 fi
 
-cat ~/.ssh/id_rsa.pub
-
 # SSH directory should exist now otherwise bail
 if [[ ! $DRY_RUN ]] && [[ ! -f "$HOME/.ssh/id_rsa" ]]; then
     echo "Missing SSH file needed for committing"
