@@ -37,6 +37,8 @@ if [[ $INPUT_SSH_KEY_PUBLIC ]]; then
     chmod 600 ~/.ssh/id_rsa
 fi
 
+cat ~/.ssh/id_rsa.pub
+
 # SSH directory should exist now otherwise bail
 if [[ ! $DRY_RUN ]] && [[ ! -f "$HOME/.ssh/id_rsa" ]]; then
     echo "Missing SSH file needed for committing"
