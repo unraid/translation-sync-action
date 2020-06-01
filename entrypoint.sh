@@ -23,16 +23,14 @@ if [[ $INPUT_SSH_KEY_PUBLIC ]]; then
     # Add keys
     echo "$INPUT_SSH_KEY_PRIVATE" > ~/.ssh/id_rsa
     echo "$INPUT_SSH_KEY_PUBLIC" > ~/.ssh/id_rsa.pub
-
+    # Set correct permissions
+    chmod 600 ~/.ssh/id_rsa
     # Fix up key?
     ssh-keygen -f ~/.ssh/id_rsa -y > ~/.ssh/id_rsa.pub
-
     # Verifiy keys
     ssh-keygen -l -f ~/.ssh/id_rsa.pub
     # Add github.com to known hosts
     ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-    # Set correct permissions
-    chmod 600 ~/.ssh/id_rsa
 fi
 
 cat ~/.ssh/id_rsa.pub
