@@ -25,8 +25,6 @@ if [[ $INPUT_SSH_KEY_PUBLIC ]]; then
     echo "$INPUT_SSH_KEY_PUBLIC" > ~/.ssh/id_rsa.pub
     # Set correct permissions
     chmod 600 ~/.ssh/id_rsa
-    # Fix up key?
-    ssh-keygen -f ~/.ssh/id_rsa -y > ~/.ssh/id_rsa.pub
     # Verifiy keys
     ssh-keygen -l -f ~/.ssh/id_rsa.pub
     # Add github.com to known hosts
